@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ESNext","module":"ESNext","moduleResolution":"Bundler","strict":true,"jsx":"preserve","jsxImportSource":"solid-js","types":["bun"],"skipLibCheck":true,"noEmit":true},"include":["apps","packages"]}
