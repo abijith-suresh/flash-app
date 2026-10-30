@@ -1,6 +1,6 @@
 # Study workspace and sessions
 
-The workspace keeps Study, Drafts, Library and History visible so people can move between distinct tasks. Study shows the actual number of approved cards due for the selected deck, or across all decks, before starting. Deck selection resets when changing workspace sections so a filter chosen for one task does not silently hide another task's cards.
+The workspace keeps Study, Drafts, Library and History visible so people can move between distinct tasks. Study shows the actual due, approved and draft counts for each deck, with an action for each deck and one for all due cards. Deck filters reset when changing workspace sections so a filter chosen for one task does not silently hide another task's cards.
 
 Starting study opens a focused session with the deck on each card, remaining due count, reveal and rating controls, and an explicit exit. Ratings are saved as they happen. Exiting returns to the workspace; completion reports the number rated in this session. Draft approval and library editing remain separate workspace tasks.
 
