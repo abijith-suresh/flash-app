@@ -1,0 +1,5 @@
+import { test, expect } from 'bun:test';
+import { mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+test('batch validation, approval, review and persisted history', async ()=>{process.env.FLASH_DB=join(mkdtempSync(join(tmpdir(),'flash-test-')),'test.sqlite'); const {db,create,review,cards}=await import('./db'); expect(()=>create([{deck:'d',question:'q',answer:'a'},{deck:'d',question:'',answer:'a'}])).toThrow(); expect(cards()).toHaveLength(0); create([{deck:'d',question:'q',answer:'a',tags:['t'],source:'s'}]); expect(()=>review(1,'good')).toThrow(); db.query("UPDATE cards SET status='approved' WHERE id=1").run(); expect(review(1,'good').interval_days).toBe(1); db.close(); const {Database}=await import('bun:sqlite'); const reopened=new Database(process.env.FLASH_DB); expect(reopened.query('SELECT rating FROM reviews').get()).toEqual({rating:'good'}); expect((reopened.query('SELECT status FROM cards').get() as {status:string}).status).toBe('approved'); reopened.close();});
